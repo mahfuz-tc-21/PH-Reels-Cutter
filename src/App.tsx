@@ -161,6 +161,11 @@ export default function App() {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
   }, [db]);
 
+  // Sync Gemini API Key changes to localStorage
+  useEffect(() => {
+    localStorage.setItem(GEMINI_KEY_STORAGE, geminiApiKey);
+  }, [geminiApiKey]);
+
   /* ----------------------------------------------------
      YouTube Player Integration
      ---------------------------------------------------- */
@@ -746,7 +751,6 @@ export default function App() {
       return;
     }
 
-    localStorage.setItem(GEMINI_KEY_STORAGE, geminiApiKey.trim());
     setIsAiLoading(true);
     setAiStatus("Connecting to Gemini Flash Latest...");
     setAiError(null);
